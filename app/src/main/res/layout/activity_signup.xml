@@ -93,7 +93,7 @@
                         android:inputType="text"
                         android:textColor="@color/black"
                         app:drawableTint="@color/bleu" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
 
@@ -148,50 +148,10 @@
                         app:drawableTint="@color/bleu" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:hint="RIB"
-                    app:boxCornerRadiusBottomEnd="20dp"
-                    app:boxCornerRadiusBottomStart="20dp"
-                    app:boxCornerRadiusTopEnd="20dp"
-                    app:boxCornerRadiusTopStart="20dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/rib"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/baseline_credit_card_24"
-                        android:drawablePadding="5dp"
-                        android:inputType="number"
-                        android:textColor="@color/black"
-                        app:drawableTint="@color/bleu" />
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Adress"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/adr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/baseline_location_pin_24"
-                    android:drawablePadding="5dp"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/black"
-                    app:drawableTint="@color/bleu" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -235,8 +195,6 @@
                     android:textColor="@color/black"
                     app:drawableTint="@color/bleu" />
             </com.google.android.material.textfield.TextInputLayout>
-
-
 
             <Button
                 android:id="@+id/signup_button"
