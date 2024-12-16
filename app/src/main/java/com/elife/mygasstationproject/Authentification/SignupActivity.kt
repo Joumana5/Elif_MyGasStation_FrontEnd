@@ -16,8 +16,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.elife.mygasstationproject.DTO.Login.SignupDto
 import com.elife.mygasstationproject.DTO.Login.ResponseDto
 import com.elife.mygasstationproject.R
-import com.elife.mygasstationproject.Service.ApiService
-import com.elife.mygasstationproject.Service.RetrofitClient
+import com.elife.mygasstationproject.Service.ApiAuthService
+import com.elife.mygasstationproject.Utils.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -81,9 +81,9 @@ class SignupActivity : AppCompatActivity() {
                     role = "client"
                 )
 
-                val apiService: ApiService = RetrofitClient.getClient().create(ApiService::class.java)
+                val apiAuthService: ApiAuthService = RetrofitClient.getClient().create(ApiAuthService::class.java)
 
-                apiService.signup(signupData).enqueue(object: Callback<ResponseDto> {
+                apiAuthService.signup(signupData).enqueue(object: Callback<ResponseDto> {
                     override fun onResponse(call: Call<ResponseDto>, response: Response<ResponseDto>) {
                         signupButton.isEnabled = true;
                         if (response.isSuccessful && response.body() != null)  {

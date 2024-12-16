@@ -1,7 +1,6 @@
 package com.elife.mygasstationproject.Authentification
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -11,13 +10,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.elife.mygasstationproject.DTO.Login.ApiResponseDto
 import com.elife.mygasstationproject.DTO.Login.ResponseDto
 import com.elife.mygasstationproject.DTO.Login.VerifyEmailDto
-import com.elife.mygasstationproject.DTO.Login.VerifyEmployeeDto
 import com.elife.mygasstationproject.R
-import com.elife.mygasstationproject.Service.ApiService
-import com.elife.mygasstationproject.Service.RetrofitClient
+import com.elife.mygasstationproject.Service.ApiAuthService
+import com.elife.mygasstationproject.Utils.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,9 +55,9 @@ class VerificationActivity : AppCompatActivity() {
         } else {
             val verificationData = VerifyEmailDto(email = email!!, verificationCode = code)
 
-            val apiService = RetrofitClient.getClient().create(ApiService::class.java)
+            val apiAuthService = RetrofitClient.getClient().create(ApiAuthService::class.java)
 
-            apiService.verifyEmail(verificationData).enqueue(
+            apiAuthService.verifyEmail(verificationData).enqueue(
                 object : Callback<ResponseDto>{
                     override fun onResponse(
                         call: Call<ResponseDto>,

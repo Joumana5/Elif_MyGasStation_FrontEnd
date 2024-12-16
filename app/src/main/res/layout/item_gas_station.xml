@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Name of the Gas Station -->
+        <TextView
+            android:id="@+id/tvGasStationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gas Station Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Available Status -->
+        <TextView
+            android:id="@+id/tvGasStationAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:textSize="14sp" />
+
+        <!-- Year of Creation -->
+        <TextView
+            android:id="@+id/tvGasStationYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Year of Creation"
+            android:textSize="14sp" />
+
+        <!-- Address -->
+        <TextView
+            android:id="@+id/tvGasStationAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="14sp" />
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/tvGasStationLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

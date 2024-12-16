@@ -1,4 +1,4 @@
-package com.elife.mygasstationproject.Service
+package com.elife.mygasstationproject.Utils
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

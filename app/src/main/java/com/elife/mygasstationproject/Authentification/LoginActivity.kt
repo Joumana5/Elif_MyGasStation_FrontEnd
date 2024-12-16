@@ -12,9 +12,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.elife.mygasstationproject.DTO.Login.LoginDto
 import com.elife.mygasstationproject.DTO.Login.LoginResponseDto
+import com.elife.mygasstationproject.MainActivity
 import com.elife.mygasstationproject.R
-import com.elife.mygasstationproject.Service.ApiService
-import com.elife.mygasstationproject.Service.RetrofitClient
+import com.elife.mygasstationproject.Service.ApiAuthService
+import com.elife.mygasstationproject.Utils.RetrofitClient
 import com.elife.mygasstationproject.profile.UserProfile
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
@@ -63,9 +64,9 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else -> {
                     val loginData = LoginDto(mail, pwd)
-                    val apiService: ApiService = RetrofitClient.getClient().create(ApiService::class.java)
+                    val apiAuthService: ApiAuthService = RetrofitClient.getClient().create(ApiAuthService::class.java)
 
-                    apiService.login(loginData).enqueue(object : Callback<LoginResponseDto> {
+                    apiAuthService.login(loginData).enqueue(object : Callback<LoginResponseDto> {
                         override fun onResponse(call: Call<LoginResponseDto>, response: Response<LoginResponseDto>) {
                             if (response.isSuccessful && response.body() != null) {
                                 val loginResponse = response.body()!!
@@ -82,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
 
                                 Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_SHORT).show()
 
-                                startActivity(Intent(this@LoginActivity, UserProfile::class.java))
+                                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
 
                             } else {
                                 if (response.code() == 400) {

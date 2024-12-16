@@ -4,35 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <!-- Contenu principal de l'application -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <!-- Toolbar pour gérer le bouton de navigation et le titre -->
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:id="@+id/toolbar"
             android:background="@color/bleu"
-            android:elevation="4dp"/>
+            android:elevation="4dp"
+            app:titleTextColor="@color/white"
+            />
 
+        <!-- FrameLayout pour le contenu principal du fragment -->
         <FrameLayout
+            android:id="@+id/fragment_contrainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/fragment_contrainer"/>
+            android:layout_height="match_parent"/>
+
     </LinearLayout>
 
+    <!-- Menu latéral -->
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
-        android:id="@+id/nav_view"
-        android:layout_gravity="start"
         app:itemIconTint="@color/bleu"
-        app:itemTextColor="@color/bleu"
-        />
+        app:itemTextColor="@color/bleu"/>
+
 </androidx.drawerlayout.widget.DrawerLayout>
