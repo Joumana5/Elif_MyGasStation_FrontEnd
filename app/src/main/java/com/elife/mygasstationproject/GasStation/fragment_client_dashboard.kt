@@ -18,11 +18,15 @@ import com.example.mygasstation.network.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.appcompat.widget.SearchView
+
 class ClientDashboardFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var gasStationAdapter: GasStationAdapter
+    private lateinit var searchView: SearchView
     private val gasStationList = mutableListOf<GasStation>()
+    private val filteredGasStationList = mutableListOf<GasStation>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,14 +38,35 @@ class ClientDashboardFragment : Fragment() {
         recyclerView = view.findViewById(R.id.rvGasStationList)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Initialiser l'adaptateur en passant le contexte
-        gasStationAdapter = GasStationAdapter(gasStationList, requireContext())
+        // Initialiser SearchView
+        searchView = view.findViewById(R.id.searchView)
+
+        // Initialiser l'adaptateur avec une liste vide au départ
+        gasStationAdapter = GasStationAdapter(filteredGasStationList, requireContext())
         recyclerView.adapter = gasStationAdapter
 
-        // Appel API pour récupérer les stations-service
+        // Configurer le SearchView pour filtrer les résultats
+        setupSearchView()
+
+        // Charger les données
         fetchGasStations()
 
         return view
+    }
+
+    private fun setupSearchView() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Pas besoin de gérer la soumission
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Filtrer les données à chaque changement de texte
+                filterGasStations(newText.orEmpty())
+                return true
+            }
+        })
     }
 
     private fun fetchGasStations() {
@@ -56,6 +81,9 @@ class ClientDashboardFragment : Fragment() {
                     response.body()?.let {
                         gasStationList.clear()
                         gasStationList.addAll(it)
+                        // Copier toutes les stations dans la liste filtrée au départ
+                        filteredGasStationList.clear()
+                        filteredGasStationList.addAll(gasStationList)
                         gasStationAdapter.notifyDataSetChanged()
                     }
                 } else {
@@ -68,6 +96,19 @@ class ClientDashboardFragment : Fragment() {
             }
         })
     }
+
+    private fun filterGasStations(query: String) {
+        // Filtrer les stations selon le nom ou l'adresse
+        val filteredList = gasStationList.filter { gasStation ->
+            gasStation.name.contains(query, ignoreCase = false) || // Sensible à la casse
+                    gasStation.address.contains(query, ignoreCase = false) // Sensible à la casse
+        }
+        // Mettre à jour la liste filtrée et notifier l'adaptateur
+        filteredGasStationList.clear()
+        filteredGasStationList.addAll(filteredList)
+        gasStationAdapter.notifyDataSetChanged()
+    }
 }
+
 
 

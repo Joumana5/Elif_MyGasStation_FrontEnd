@@ -8,52 +8,71 @@
     app:cardElevation="4dp"
     android:layout_margin="8dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Name of the Gas Station -->
-        <TextView
-            android:id="@+id/tvGasStationName"
+        <!-- LinearLayout for Gas Station Information -->
+        <LinearLayout
+            android:id="@+id/layoutGasStationInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gas Station Name"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ivMapIcon">
 
-        <!-- Available Status -->
-        <TextView
-            android:id="@+id/tvGasStationAvailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Available"
-            android:textSize="14sp" />
+            <!-- Name of the Gas Station -->
+            <TextView
+                android:id="@+id/tvGasStationName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gas Station Name"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <!-- Year of Creation -->
-        <TextView
-            android:id="@+id/tvGasStationYear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Year of Creation"
-            android:textSize="14sp" />
+            <!-- Available Status -->
+            <TextView
+                android:id="@+id/tvGasStationAvailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available"
+                android:textSize="14sp" />
 
-        <!-- Address -->
-        <TextView
-            android:id="@+id/tvGasStationAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:textSize="14sp" />
+            <!-- Year of Creation -->
+            <TextView
+                android:id="@+id/tvGasStationYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Year of Creation"
+                android:textSize="14sp" />
 
-        <!-- Location -->
-        <TextView
-            android:id="@+id/tvGasStationLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"
-            android:textSize="14sp" />
+            <!-- Address -->
+            <TextView
+                android:id="@+id/tvGasStationAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contry"
+                android:textSize="14sp" />
 
-    </LinearLayout>
+            <!-- Location -->
+            <TextView
+                android:id="@+id/tvGasStationLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <!-- Map Icon -->
+        <ImageView
+            android:id="@+id/ivMapIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Map Icon"
+            android:src="@drawable/baseline_location_pin_24" />
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

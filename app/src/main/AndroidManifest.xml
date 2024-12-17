@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -23,9 +25,7 @@
         <activity
             android:name=".Authentification.VerificationActivity"
             android:exported="false" />
-        <activity
-            android:name=".LocationFragment"
-            android:exported="false" />
+
         <activity
             android:name=".Authentification.SignupActivity"
             android:exported="false" />
