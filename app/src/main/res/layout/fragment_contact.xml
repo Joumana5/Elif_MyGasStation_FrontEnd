@@ -1,18 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactFragment">
+    tools:context=".ContactFragment"
+    android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <View
+        android:id="@+id/expanding_circle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/black_circle_background"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact Fragment"
-        android:textSize="30sp"
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_centerInParent="true"
-        android:textColor="@color/bleu"
-        />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/contact_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Fragment"
+            android:textSize="30sp"
+            android:textColor="@color/bleu"
+            android:layout_gravity="start" />
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This application helps you find the nearest gas stations and provides real-time updates on fuel availability."
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/bleu"
+            android:layout_gravity="start" />
+
+        <TextView
+            android:id="@+id/linkedin_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LinkedIn: linkedin.com/in/yourprofile"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/bleu"
+            android:layout_gravity="start" />
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: contact@mygasstation.com"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/bleu"
+            android:layout_gravity="start" />
+
+    </LinearLayout>
 
 </RelativeLayout>

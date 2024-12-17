@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,28 +18,30 @@
         android:theme="@style/Theme.MyGasStationProject"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".profile.UserProfile"
             android:exported="false" />
         <activity
             android:name=".Authentification.VerificationActivity"
             android:exported="false" />
-
         <activity
             android:name=".Authentification.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".Authentification.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".Authentification.LandingPage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

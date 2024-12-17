@@ -1,7 +1,11 @@
 package com.elife.mygasstationproject.Authentification
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editmail: TextInputEditText
     private lateinit var editpwd: TextInputEditText
     private lateinit var loginButton: Button
-    private lateinit var signPage:TextView
+    private lateinit var signPage: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +44,14 @@ class LoginActivity : AppCompatActivity() {
         editmail = findViewById(R.id.mail)
         editpwd = findViewById(R.id.pwd)
         loginButton = findViewById(R.id.login_button)
-        signPage=findViewById(R.id.sign)
+        signPage = findViewById(R.id.sign)
 
         val backButton: ImageView = findViewById(R.id.back_button)
         backButton.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
+            val intent = Intent(this, LandingPage::class.java)
             startActivity(intent)
         }
-        signPage.setOnClickListener{
+        signPage.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
@@ -100,12 +104,23 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        // Animation logic
+        val circleView: View = findViewById(R.id.circle_view)
+        val logoContainer: View = findViewById(R.id.logo_container)
 
+        // Animate the circle from the top to the center and expand
+        circleView.post {
+            val startY = -circleView.height.toFloat()
+            val endY = (logoContainer.height / 2 - circleView.height / 2).toFloat()
+            val translateAnimator = ObjectAnimator.ofFloat(circleView, "translationY", startY, endY)
+            val scaleXAnimator = ObjectAnimator.ofFloat(circleView, "scaleX", -1f, logoContainer.width / circleView.width.toFloat())
+            val scaleYAnimator = ObjectAnimator.ofFloat(circleView, "scaleY", -1f, logoContainer.width / circleView.width.toFloat()) // Use width to maintain aspect ratio
 
-    }
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(translateAnimator, scaleXAnimator, scaleYAnimator)
+            animatorSet.duration = 3000 // Increase duration for slow motion effect
+            animatorSet.interpolator = AccelerateDecelerateInterpolator()
+            animatorSet.start()
         }
-
-
-
-
-
+    }
+}
