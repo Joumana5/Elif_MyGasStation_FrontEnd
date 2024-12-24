@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.MyGasStationProject" parent="Base.Theme.MyGasStationProject" />
+
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <!--non selected star color-->
+    <item name="colorControlNormal">#4D000000</item>
+
+        <!--non selected star color-->
+    <item name="colorControlActivated">@color/jaune</item>
+    </style>
 </resources>
